@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  background-color:rgb(21, 21, 21);
+  color: #f3f4f6;
+}
+
+@layer utilities {
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes loading {
+    0% {
+      transform: translateX(-100%);
+    }
+    50% {
+      transform: translateX(120%);
+    }
+    100% {
+      transform: translateX(250%);
+    }
+  }
+
+  .animate-blink {
+    animation: blink 0.4s step-end infinite;
+  }
+
+  .animate-loading-bar {
+    animation: loading 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+}
+
+/* Scrolling effect */
+.reveal {
+  opacity: 0;
+  transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Fade-in từ dưới lên */
+.reveal.fade-up {
+  transform: translateY(50px);
+}
+
+.reveal.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade-in từ trái sang phải */
+.reveal.fade-left {
+  transform: translateX(-50px);
+  opacity: 0; /* Để hiệu ứng fade-in hoạt động */
+}
+
+.reveal.fade-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Fade-in từ phải sang trái */
+.reveal.fade-right {
+  transform: translateX(50px);
+  opacity: 0;
+}
+
+.reveal.fade-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Fade-in từ trên xuống */
+.reveal.fade-down {
+  transform: translateY(-50px);
+}
+
+.reveal.fade-down.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
